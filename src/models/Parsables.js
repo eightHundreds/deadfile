@@ -1,4 +1,4 @@
-const defaultParsableExtensions = [".js", ".jsx", ".ts", "tsx", ".vue"];
+const defaultParsableExtensions = [".js", ".jsx", ".ts", ".tsx", ".vue"];
 const excludedAssets = [
   // tests
   ".spec.js",
