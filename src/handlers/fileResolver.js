@@ -26,6 +26,10 @@ function checkBabelModuleResolver(filePath, currentFile) {
     const opts = moduleResolverConfig[1];
     const babelFileDirectory = path.dirname(loadedConfig.file);
     const rootDirectory = path.join(babelFileDirectory, opts.root[0]);
+    const [aliasKey,aliasMap] = Object.entries(opts.alias).find(([key,value])=>filePath.startsWith(key)) || [undefined,undefined]
+    if(aliasKey){
+      return resolveSync(rootDirectory,filePath.replace(aliasKey,aliasMap))
+    }
     const aliasList = Object.fromEntries(
       Object.entries(opts.alias).map(([key, value]) => [
         key,
